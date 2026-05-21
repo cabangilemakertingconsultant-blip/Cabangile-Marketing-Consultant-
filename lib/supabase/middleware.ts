@@ -1,3 +1,12 @@
-git add middleware.ts
-git commit -m "fix: add middleware for Vercel deploy"
-git push
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+
+export function middleware(req: NextRequest) {
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|api/health).*)",
+  ],
+};
